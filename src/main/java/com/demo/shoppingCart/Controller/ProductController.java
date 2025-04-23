@@ -32,4 +32,14 @@ public class ProductController {
     public String test() {
         return "hello world";
     }
+
+    @PutMapping("/update")
+    public Product updateProduct(@RequestBody Product product) {
+        return productService.updateProduct(product);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable("id") Long id) {
+        return productService.deleteProduct(id);
+    }
 }

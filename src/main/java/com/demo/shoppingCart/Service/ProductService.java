@@ -32,4 +32,24 @@ public class ProductService {
     public Product findByProductName(String name) {
         return productRepository.findByName(name);
     }
+
+    public Product updateProduct(Product product) {
+        Product existingProduct = productRepository.findById(product.getId()).orElse(null);
+        final ProductType productType = product.getProductType();
+
+        existingProduct.setProductId(product.getProductId());
+        existingProduct.setProductType(product.getProductType());
+        existingProduct.setDescription(product.getDescription());
+        existingProduct.setUnitPrice(product.getUnitPrice());
+        existingProduct.setImageUrl(product.getImageUrl());
+
+        productTypeRepository.save(productType);
+
+        return productRepository.save(existingProduct);
+    }
+
+    public String deleteProduct(Long id) {
+        productRepository.deleteById(id);
+        return "Product Deleted";
+    }
 }

@@ -3,10 +3,8 @@ package com.demo.shoppingCart.Controller;
 import com.demo.shoppingCart.Model.ProductType;
 import com.demo.shoppingCart.Service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -17,7 +15,7 @@ public class ProductTypeController {
     private ProductTypeService productTypeService;
 
     @PostMapping("/save")
-    public ProductType saveProductType(ProductType productType) {
+    public ProductType saveProductType(@RequestBody ProductType productType) {
         return productTypeService.saveProductType(productType);
     }
 
