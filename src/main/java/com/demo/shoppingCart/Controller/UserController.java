@@ -3,10 +3,7 @@ package com.demo.shoppingCart.Controller;
 import com.demo.shoppingCart.Model.User;
 import com.demo.shoppingCart.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -22,11 +19,11 @@ public class UserController {
 
     @PostMapping("/login")
     public String loginUser(@RequestBody User user) {
-        User userT = userService.getUserByNameAndPassword(user.getUsername(), user.getPassword());
+        return userService.verifyUser(user);
+    }
 
-        if(userT == null)
-            return "User not registered/credentials is incorrect";
-        else
-            return "Log in successful!!";
+    @PutMapping("/update")
+    public User updateUser(@RequestBody User user) {
+        return userService.updateUser(user);
     }
 }
