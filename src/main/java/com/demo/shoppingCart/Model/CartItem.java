@@ -19,6 +19,7 @@ public class CartItem {
 
     private double quantity;
     private double netPrice;
+    private String username;
 
     public CartItem() {
 
@@ -62,5 +63,13 @@ public class CartItem {
 
     public void setNetPrice(double netPrice) {
         this.netPrice = netPrice;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

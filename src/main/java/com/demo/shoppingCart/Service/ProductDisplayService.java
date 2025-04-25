@@ -6,7 +6,9 @@ import com.demo.shoppingCart.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProductDisplayService {
@@ -14,10 +16,9 @@ public class ProductDisplayService {
     @Autowired
     private ProductRepository productRepository;
 
-    private final List<ProductDTO> productList = new ArrayList<>();
-
-    public List<ProductDTO> getAllProduct() {
+    public Set<ProductDTO> getAllProduct() {
         List<Product> products = productRepository.findAll();
+        final Set<ProductDTO> productList = new HashSet<>();
 
         for(Product product: products) {
             ProductDTO productDTO = new ProductDTO();
